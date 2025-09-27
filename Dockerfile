@@ -1,7 +1,7 @@
 # Multi-stage build for Spring Boot backend application
 
 # ---- Stage 1: Build ----
-FROM maven:3.9.6-eclipse-temurin-17 AS builder
+FROM maven:3.9.6-eclipse-temurin-21 AS builder
 
 # Set working directory
 WORKDIR /app
@@ -21,7 +21,7 @@ COPY backend/src ./src
 RUN ./mvnw clean package -DskipTests
 
 # ---- Stage 2: Runtime ----
-FROM eclipse-temurin:17-jre
+FROM eclipse-temurin:21-jre
 
 # Create app user for security
 RUN addgroup --gid 1001 --system appgroup && \

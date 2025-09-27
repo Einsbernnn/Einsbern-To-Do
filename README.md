@@ -48,14 +48,14 @@ docker-compose up -d
 
 **Tech Stack:**
 - **Frontend**: Vue.js 3, TypeScript, Vite, Nginx
-- **Backend**: Spring Boot 3.5.6, Java 17, Maven, Embedded Tomcat
+- **Backend**: Spring Boot 3.5.6, Java 21, Maven, Embedded Tomcat
 - **Containerization**: Docker, Docker Compose
 - **Development**: Hot reloading, multi-stage builds
 
 ## 🔧 Prerequisites
 
 - **Docker** & **Docker Compose** (recommended)
-- **Java 17+** (for local backend development)
+- **Java 21+** (for local backend development)
 - **Node.js 20+** (for local frontend development)
 - **Maven 3.9+** (for local backend development)
 
@@ -234,7 +234,7 @@ npm run preview
 
 - **Spring Boot 3.5.6**: Modern Java framework
 - **Spring Web**: REST API development
-- **Java 17**: Latest LTS Java version
+- **Java 21**: Latest LTS Java version with enhanced performance
 - **Maven**: Dependency management and build tool
 - **Embedded Tomcat**: Application server
 

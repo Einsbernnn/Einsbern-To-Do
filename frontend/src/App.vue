@@ -1,30 +1,36 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+// Root layout — wired to router and pinia in main.ts
 </script>
 
 <template>
   <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    <header>
+      <nav>
+        <router-link to="/">Home</router-link>
+        |
+        <router-link to="/about">About</router-link>
+        |
+        <router-link to="/main">Main</router-link>
+      </nav>
+    </header>
+
+    <main>
+      <router-view />
+    </main>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+header {
+  padding: 1rem;
+  background: #f6f8fa;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+nav a {
+  margin-right: 0.5rem;
+  color: #42b883;
+  text-decoration: none;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+main {
+  padding: 1rem;
 }
 </style>

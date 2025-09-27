@@ -1,0 +1,21 @@
+# ---- Stage 1: Build ----
+FROM maven:3.9.6-eclipse-temurin-17 AS builder
+WORKDIR /app
+COPY pom.xml .
+RUN mvn dependency:go-offline -B
+COPY src ./src
+RUN mvn clean package -DskipTests && \
+	# If the build produced a single jar or war, rename it to app.jar so the
+	# runtime image can copy a stable filename. This uses a shell glob to
+	# find the artifact if present.
+	sh -c 'ARTIFACT=$(ls target/*.jar target/*.war 2>/dev/null | head -n1) && if [ -n "$ARTIFACT" ]; then cp "$ARTIFACT" target/app.jar; fi'
+
+# ---- Stage 2: Run ----
+FROM eclipse-temurin:17-jdk
+WORKDIR /app
+# Normalize built artifact to a stable name (app.jar) in the builder stage so
+# the runtime stage doesn't depend on whether the project produces a .jar or
+# a .war file.
+COPY --from=builder /app/target/app.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","app.jar"]

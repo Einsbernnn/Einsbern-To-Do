@@ -1,0 +1,38 @@
+# Frontend files (not needed for backend build)
+frontend/
+
+# Git files
+.git/
+.gitignore
+.gitattributes
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Documentation
+README.md
+*.md
+
+# Docker files
+docker-compose.yml
+backend/dockerfile
+
+# Maven build files in backend (will be generated during build)
+backend/target/
+
+# Node modules (if any)
+node_modules/
+
+# Environment files with secrets
+.env
+*.env
+
+# Logs
+*.log
